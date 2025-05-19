@@ -1,0 +1,31 @@
+<div class="form-container">
+  <h2>Student Information</h2>
+
+  <form [formGroup]="form" (ngSubmit)="addEntry()" class="form-fields">
+    <input type="text" formControlName="name" placeholder="First Name" />
+    <input type="text" formControlName="lastName" placeholder="Last Name" />
+    <input type="number" formControlName="age" placeholder="Age" />
+    <button type="submit">Add</button>
+  </form>
+
+  <table *ngIf="entries.length > 0">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entry of entries">
+      <td>{{ entry.id }}</td>
+      <td>{{ entry.name }}</td>
+      <td>{{ entry.lastName }}</td>
+      <td>{{ entry.age }}</td>
+      <td><button (click)="removeEntry(entry.id)">Remove</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
